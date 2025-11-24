@@ -34,7 +34,7 @@ RUN echo "DISTRO is: ${DISTRO}"  && echo "PATRONI_VERSION is: ${PATRONI_VERSION}
     else \
       apt update \
       && apt install -y --no-install-recommends \
-        patroni=${PATRONI_VERSION}-1 \
+        patroni=${PATRONI_VERSION}-* \
         python3-psycopg2 \
         curl \
       && apt clean all \
