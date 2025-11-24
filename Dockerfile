@@ -27,6 +27,7 @@ RUN echo "DISTRO is: ${DISTRO}"  && echo "PATRONI_VERSION is: ${PATRONI_VERSION}
         py3-psycopg-c \
         py3-psycopg2 \
         py3-psutil \
+        curl \
       && pip install --no-cache-dir --break-system-packages \
         "patroni[psycopg2,psycopg3,all]"==${PATRONI_VERSION} \
       && rm -rf /var/cache/apk/*; \
@@ -35,6 +36,7 @@ RUN echo "DISTRO is: ${DISTRO}"  && echo "PATRONI_VERSION is: ${PATRONI_VERSION}
       && apt install -y --no-install-recommends \
         patroni=${PATRONI_VERSION}-1 \
         python3-psycopg2 \
+        curl \
       && apt clean all \
       && rm -rf \
         /var/lib/apt/lists/* \
