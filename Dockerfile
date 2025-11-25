@@ -46,6 +46,11 @@ RUN echo "DISTRO is: ${DISTRO}"  && echo "PATRONI_VERSION is: ${PATRONI_VERSION}
     && chown postgres:postgres /var/lib/postgresql \
     && chmod 700 /var/lib/postgresql
 
+# WE REMOVE ALL VOLUME DECLARATIONS FROM THE BASE IMAGE
+# here: "Volumes": "/var/lib/postgresql/data" creating an unnamed volume and corrupting permissions
+# The correct volume in the image is mounted as: /var/lib/postgresql/patroni/main 
+VOLUME [""]
+
 USER postgres
 
 ENTRYPOINT ["/usr/bin/patroni"]
